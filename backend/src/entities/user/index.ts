@@ -6,7 +6,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
 } from "typeorm";
-
+import { Exclude } from "class-transformer";
 import { v4 as uuid } from "uuid";
 import { Contact } from "../contacts";
 
@@ -14,6 +14,9 @@ import { Contact } from "../contacts";
 export class User {
   @PrimaryColumn("uuid")
   readonly id: string;
+
+  @Column({ type: "boolean", default: true })
+  isActive!: boolean;
 
   @CreateDateColumn()
   createdAt!: Date;
@@ -28,6 +31,7 @@ export class User {
   email1!: string;
 
   @Column({ type: "varchar", nullable: false })
+  @Exclude()
   password!: string | null;
 
   @Column({ type: "varchar", nullable: true })

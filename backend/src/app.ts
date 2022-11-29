@@ -1,7 +1,6 @@
 import express, { Request, Response } from "express";
 import "express-async-errors";
-import { AppError } from "./errors/AppError";
-import { handleErrorMiddleware } from "./errors/HandleError/handleError.middleware";
+import { handleErrorMiddleware } from "./errors";
 
 export const app = express();
 
