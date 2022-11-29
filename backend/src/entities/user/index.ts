@@ -32,7 +32,7 @@ export class User {
 
   @Column({ type: "varchar", nullable: false })
   @Exclude()
-  password!: string | null;
+  password!: string;
 
   @Column({ type: "varchar", nullable: true })
   email2!: string | null;

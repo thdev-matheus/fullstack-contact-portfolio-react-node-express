@@ -1,3 +1,5 @@
+import { Contact } from "../../entities/contacts";
+
 export interface IUser {
   id: string;
   fullName: string;
@@ -8,13 +10,14 @@ export interface IUser {
   password: string;
   createdAt: Date;
   updatedAt: Date;
+  contacts: Contact[];
 }
 
 export interface IUserRequest {
   fullName: string;
   email1: string;
   email2?: string;
-  phone1?: string;
+  phone1: string;
   phone2?: string;
   password: string;
 }
