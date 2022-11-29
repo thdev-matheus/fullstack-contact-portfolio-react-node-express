@@ -2,13 +2,10 @@ import * as yup from "yup";
 import { SchemaOf } from "yup";
 import { IUserUpdate } from "../services/user/types";
 
-export const createUserSchema: SchemaOf<IUserUpdate> = yup.object().shape({
+export const updateUserSchema: SchemaOf<IUserUpdate> = yup.object().shape({
   fullName: yup.string().min(5),
 
-  email1: yup
-    .string()
-    .email("email1: Invalid e-mail")
-    .required("email1: Mandatory field"),
+  email1: yup.string().email("email1: Invalid e-mail"),
 
   email2: yup.string().email("email2: Mandatory field"),
 
