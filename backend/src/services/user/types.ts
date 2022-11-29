@@ -22,11 +22,6 @@ export interface IUserRequest {
   password: string;
 }
 
-export interface IUserLoginRequest {
-  email: string;
-  password: string;
-}
-
 export interface IUserUpdate {
   fullName?: string;
   email1?: string;
