@@ -1,4 +1,4 @@
-import { User } from "../user";
+import { User } from "../../entities/user";
 
 export interface IContact {
   id: string;
@@ -11,9 +11,9 @@ export interface IContact {
 }
 
 export interface IContactRequest {
-  name?: string;
-  email1?: string;
+  name: string;
+  email1: string;
   email2?: string;
-  phone1?: string;
+  phone1: string;
   phone2?: string;
 }

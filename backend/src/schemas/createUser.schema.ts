@@ -10,7 +10,7 @@ export const createUserSchema: SchemaOf<IUserRequest> = yup.object().shape({
     .email("email1: Invalid e-mail")
     .required("email1: Mandatory field"),
 
-  email2: yup.string().email("email2: Mandatory field"),
+  email2: yup.string().email("email2: Invalid e-mail"),
 
   password: yup
     .string()

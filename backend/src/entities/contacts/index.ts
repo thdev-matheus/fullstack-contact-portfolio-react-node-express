@@ -10,13 +10,13 @@ export class Contact {
   @Column({ type: "varchar", nullable: false })
   name!: string;
 
-  @Column({ type: "varchar", nullable: true })
+  @Column({ type: "varchar", nullable: false })
   email1!: string;
 
   @Column({ type: "varchar", nullable: true })
   email2!: string;
 
-  @Column({ type: "varchar", nullable: true })
+  @Column({ type: "varchar", nullable: false })
   phone1!: string;
 
   @Column({ type: "varchar", nullable: true })
