@@ -12,5 +12,5 @@ export const createContactController = async (req: Request, res: Response) => {
     userEmail!
   );
 
-  return res.status(201).json(instanceToPlain(createdContact));
+  return res.status(201).json(createdContact);
 };

@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { createContactController } from "../../controllers/contact/createContact.controller";
+import { retrieveAllUserContactsController } from "../../controllers/contact/retrieveAllUserContacts.controller";
 import { createContactValidationFieldsMiddleware } from "../../middlewares/createContactValidationFields.middleware";
 import { isActiveMiddleware } from "../../middlewares/isActive.middleware";
 import { isAuthenticatedMiddleware } from "../../middlewares/isAuthenticated.middleware";
@@ -15,5 +16,12 @@ export const contactRoutes = () => {
     createContactValidationFieldsMiddleware(createContactSchema),
     createContactController
   );
+  router.get(
+    "",
+    isAuthenticatedMiddleware,
+    isActiveMiddleware,
+    retrieveAllUserContactsController
+  );
+
   return router;
 };
