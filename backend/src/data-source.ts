@@ -13,7 +13,7 @@ const AppDataSource = new DataSource(
         database: process.env.POSTGRES_DB,
         logging: true,
         synchronize: false,
-        entities: ["./src/entities/*.ts"],
+        entities: ["./src/entities/**/*.ts"],
         migrations: ["./src/migrations/*.ts"],
       }
     : process.env.NODE_ENV === "dev"
@@ -26,7 +26,7 @@ const AppDataSource = new DataSource(
         database: process.env.POSTGRES_DB,
         logging: true,
         synchronize: false,
-        entities: ["./src/entities/*.ts"],
+        entities: ["./src/entities/**/*.ts"],
         migrations: ["./src/migrations/*.ts"],
       }
     : {
@@ -38,7 +38,7 @@ const AppDataSource = new DataSource(
         database: process.env.POSTGRES_DB,
         logging: true,
         synchronize: false,
-        entities: ["src/entities/*.ts"],
+        entities: ["src/entities/**/*.ts"],
         migrations: ["src/migrations/*.ts"],
       }
 );

@@ -8,6 +8,7 @@ import {
 } from "typeorm";
 
 import { v4 as uuid } from "uuid";
+import { Contact } from "../contacts";
 
 @Entity()
 export class User {
@@ -32,11 +33,14 @@ export class User {
   @Column({ type: "varchar", nullable: true })
   email2!: string | null;
 
-  @Column({ type: "varchar", nullable: true })
-  phone1!: string | null;
+  @Column({ type: "varchar", nullable: false })
+  phone1!: string;
 
   @Column({ type: "varchar", nullable: true })
   phone2!: string | null;
+
+  @OneToMany((type) => Contact, (contact) => contact.user, { eager: true })
+  contacts!: Contact[];
 
   constructor() {
     this.id = uuid();
