@@ -4,7 +4,7 @@ import { softDeleteUserService } from "../../services/user/softDeleteUser.servic
 export const softDeleteUserController = async (req: Request, res: Response) => {
   const { userId } = req;
 
-  await softDeleteUserService(userId!);
+  const _ = await softDeleteUserService(userId!);
 
-  return res.status(204);
+  return res.status(204).json({ message: "User deleted successfuly" });
 };
