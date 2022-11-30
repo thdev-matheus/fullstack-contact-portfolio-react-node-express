@@ -30,6 +30,18 @@ services:
     volumes:
       - .:/usr/app
 
+  client:
+    container_name: client
+    build: ./frontend
+    ports:
+      - 3000:3000
+    stdin_open: true
+    volumes:
+      - ./frontend:/usr/app
+    depends_on:
+      - database
+      - server
+      
 # volumes:
 #   contactportfolio:
 #     external: true
