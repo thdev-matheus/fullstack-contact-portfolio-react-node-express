@@ -18,25 +18,17 @@ export const userRoutes = () => {
     createUserValidationFieldsMiddleware(createUserSchema),
     createUsercontroller
   );
-  router.get(
-    "",
-    isAuthenticatedMiddleware,
-    isActiveMiddleware,
-    retrieveUserController
-  );
+
+  router.use(isAuthenticatedMiddleware);
+  router.use(isActiveMiddleware);
+
+  router.get("", retrieveUserController);
   router.patch(
     "",
-    isAuthenticatedMiddleware,
-    isActiveMiddleware,
     updateUserValidationFieldsMiddleware(updateUserSchema),
     updateUserController
   );
-  router.delete(
-    "",
-    isAuthenticatedMiddleware,
-    isActiveMiddleware,
-    softDeleteUserController
-  );
+  router.delete("", softDeleteUserController);
 
   return router;
 };

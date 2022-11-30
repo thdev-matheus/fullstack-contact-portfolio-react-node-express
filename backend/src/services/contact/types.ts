@@ -17,3 +17,11 @@ export interface IContactRequest {
   phone1: string;
   phone2?: string;
 }
+
+export interface IContactUpdate {
+  name?: string;
+  email1?: string;
+  email2?: string;
+  phone1?: string;
+  phone2?: string;
+}
