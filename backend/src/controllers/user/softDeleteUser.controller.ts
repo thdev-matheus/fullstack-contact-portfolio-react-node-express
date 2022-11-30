@@ -6,5 +6,5 @@ export const softDeleteUserController = async (req: Request, res: Response) => {
 
   const _ = await softDeleteUserService(userId!);
 
-  return res.status(204).json({ message: "User deleted successfuly" });
+  return res.status(204).json();
 };

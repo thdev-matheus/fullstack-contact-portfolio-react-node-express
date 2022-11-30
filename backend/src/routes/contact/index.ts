@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { createContactController } from "../../controllers/contact/createContact.controller";
+import { deleteContactController } from "../../controllers/contact/deleteContact.controller";
 import { retrieveAllUserContactsController } from "../../controllers/contact/retrieveAllUserContacts.controller";
 import { updateContactController } from "../../controllers/contact/updateContact.controller";
 import { createContactValidationFieldsMiddleware } from "../../middlewares/createContactValidationFields.middleware";
@@ -20,6 +21,7 @@ export const contactRoutes = () => {
   );
   router.get("", retrieveAllUserContactsController);
   router.patch("/:contactId/", updateContactController);
+  router.delete("/:contactId/", deleteContactController);
 
   return router;
 };
