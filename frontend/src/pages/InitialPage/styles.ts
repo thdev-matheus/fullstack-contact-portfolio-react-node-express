@@ -17,12 +17,12 @@ export const WhiteBox = styled.div`
   align-items: center;
   gap: 1rem;
 
-  border-radius: 0 0 15rem 0;
+  border-radius: 0 15rem 0 0;
 
-  background-color: var(--white);
+  background-color: var(--light-green);
 
   & > img {
-    width: 90%;
+    width: 60%;
   }
 `;
 
@@ -43,14 +43,14 @@ export const BlackBox = styled.div`
 
     & > p {
       & > span {
-        color: var(--light-pink);
+        color: var(--grey-purple);
 
         transition: 0.8s;
 
         cursor: pointer;
 
         :hover {
-          color: var(--pink);
+          color: var(--light-green);
 
           transition: 0.8s;
         }

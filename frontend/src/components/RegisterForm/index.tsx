@@ -110,9 +110,10 @@ export const RegisterForm = ({ setIsRegister }: IRegisterProps) => {
         text="Cadastrar"
         height="2.5rem"
         width="16rem"
-        bgColor="var(--white)"
-        color="var(--black)"
-        hBgColor="var(--gray)"
+        bgColor="var(--light-green)"
+        color="var(--dark-purple)"
+        hBgColor="var(--medium-purple)"
+        hColor="var(--light-green)"
       />
     </S.Container>
   );
