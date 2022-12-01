@@ -5,17 +5,7 @@ import { handleErrorMiddleware } from "./errors";
 import { appRoutes } from "./routes";
 
 export const app = express();
-
-app.use((req: Request, res: Response, next: NextFunction) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET, PATCH, POST, DELETE");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "X-PINGOTHER, Content-Type, Authorization"
-  );
-  app.use(cors());
-  next();
-});
+app.use(cors());
 
 app.use(express.json());
 
