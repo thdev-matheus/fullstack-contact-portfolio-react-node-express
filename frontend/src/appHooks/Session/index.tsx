@@ -1,4 +1,7 @@
 import { ISessionHook } from "./types";
+import { api } from "../../services/api";
+import { IUser } from "../../globalTypes";
+import { toast } from "react-toastify";
 
 export const useSessionInfo = (): ISessionHook => {
   let fullName = sessionStorage.getItem("fullName");
@@ -23,6 +26,36 @@ export const useSessionInfo = (): ISessionHook => {
     sessionStorage.setItem(key, value);
   };
 
+  const getUser = async (): Promise<IUser | any> => {
+    try {
+      const response = await api.get("users/", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      return response.data;
+    } catch (error) {
+      toast.error("Problemas ao carregar informações de usuário", {
+        icon: "🦆🔴",
+      });
+    }
+  };
+
+  const delContact = async (contactId: string): Promise<void> => {
+    try {
+      await api.delete(`contacts/${contactId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+    } catch (error) {
+      toast.error("Problemas ao deletar o contato", {
+        icon: "🦆🔴",
+      });
+    }
+  };
+
   return {
     fullName,
     email1,
@@ -31,5 +64,7 @@ export const useSessionInfo = (): ISessionHook => {
     phone2,
     token,
     saveSession,
+    getUser,
+    delContact,
   };
 };

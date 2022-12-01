@@ -8,8 +8,9 @@ import { contactSchema } from "../../schemas";
 import { toast } from "react-toastify";
 import { api } from "../../services/api";
 import { useSessionInfo } from "../../appHooks";
+import { IContactFormProps } from "./types";
 
-export const ContactForm = () => {
+export const ContactForm = ({ setUser }: IContactFormProps) => {
   const { token } = useSessionInfo();
   const {
     register,
@@ -20,6 +21,8 @@ export const ContactForm = () => {
     reValidateMode: "onSubmit",
     resolver: yupResolver(contactSchema),
   });
+
+  const { getUser } = useSessionInfo();
 
   const onSubmitContact = async (data: IContactData) => {
     try {
@@ -33,6 +36,8 @@ export const ContactForm = () => {
         },
       });
       toast.success("Contato salvo", { icon: "🦆🟢" });
+
+      await getUser().then((res) => setUser(res));
 
       reset();
     } catch (error) {

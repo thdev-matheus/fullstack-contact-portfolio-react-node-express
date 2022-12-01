@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Dashboard } from "../pages/Dashobard";
+import { Dashboard } from "../pages/Dashboard";
 import { Error } from "../pages/ErrorPage";
 import { InitialPage } from "../pages/InitialPage";
 

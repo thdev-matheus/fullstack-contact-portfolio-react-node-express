@@ -116,6 +116,23 @@ export const BoxContacts = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  gap: 0.5rem;
 
   padding: 2rem 1rem;
+
+  color: var(--dark-purple);
+
+  & > section {
+    height: 30rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+
+    padding-bottom: 1rem;
+
+    overflow-y: auto;
+  }
 `;

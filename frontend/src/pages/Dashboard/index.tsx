@@ -2,11 +2,23 @@ import * as S from "./styles";
 import { useFormatter, useSessionInfo } from "../../appHooks";
 import { FiEdit } from "react-icons/fi";
 import { ContactForm } from "../../components/ContactForm";
+import { ContactCard } from "../../components/ContactCard";
+import { useEffect, useState } from "react";
+import { IUser } from "../../globalTypes";
 
 export const Dashboard = () => {
-  const { fullName, email1, email2, phone1, phone2, token, saveSession } =
+  const [user, setUser] = useState<IUser>({} as IUser);
+
+  const { fullName, email1, email2, phone1, phone2, getUser } =
     useSessionInfo();
   const { convertPhoneNumber } = useFormatter();
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      await getUser().then((res) => setUser(res));
+    };
+    fetchUser();
+  }, [getUser]);
 
   return (
     <S.Container>
@@ -36,10 +48,22 @@ export const Dashboard = () => {
             </section>
           </section>
         </S.BoxUser>
-        <ContactForm />
+        <ContactForm setUser={setUser} />
       </section>
 
-      <S.BoxContacts></S.BoxContacts>
+      <S.BoxContacts>
+        <h2>Contatos</h2>
+        <section>
+          {user.contacts &&
+            user.contacts.map((contact) => (
+              <ContactCard
+                setUser={setUser}
+                contact={contact}
+                key={contact.id}
+              />
+            ))}
+        </section>
+      </S.BoxContacts>
     </S.Container>
   );
 };

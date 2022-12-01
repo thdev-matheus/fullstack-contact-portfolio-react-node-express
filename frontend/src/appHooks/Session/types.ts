@@ -1,3 +1,5 @@
+import { IUser } from "../../globalTypes";
+
 export interface ISessionHook {
   fullName: string | null;
   email1: string | null;
@@ -9,4 +11,6 @@ export interface ISessionHook {
     key: string,
     value: string | number | object | object[]
   ) => void;
+  getUser: () => Promise<IUser | any>;
+  delContact: (contactId: string) => Promise<void>;
 }
