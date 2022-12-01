@@ -11,9 +11,16 @@ export const Container = styled.form`
 
   & > div {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
     gap: 2rem;
+
+    & > fieldset {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
   }
 `;

@@ -49,64 +49,72 @@ export const RegisterForm = ({ setIsRegister }: IRegisterProps) => {
   return (
     <S.Container onSubmit={handleSubmit(onSubmitRegister)}>
       <div>
-        <Input
-          label="Nome*"
-          icon={FiUser}
-          error={errors.fullName?.message?.toString()}
-          placeholder="Digite seu nome completo"
-          {...register("fullName")}
-          width="16rem"
-        />
-        <Input
-          label="E-mail 1*"
-          icon={FiMail}
-          error={errors.email1?.message?.toString()}
-          placeholder="Digite seu e-mail principal"
-          {...register("email1")}
-          width="16rem"
-        />
-        <Input
-          label="E-mail 2"
-          icon={FiMail}
-          error={errors.email2?.message?.toString()}
-          placeholder="Digite um email secundário"
-          {...register("email2")}
-          width="16rem"
-        />
-        <Input
-          label="Telefone 1*"
-          icon={FiMail}
-          error={errors.phone1?.message?.toString()}
-          placeholder="Digite seu telefone principal"
-          {...register("phone1")}
-          width="16rem"
-        />
-        <Input
-          label="Telefone 2"
-          icon={FiMail}
-          error={errors.phone2?.message?.toString()}
-          placeholder="Digite um telefone secundário"
-          {...register("phone2")}
-          width="16rem"
-        />
-        <Input
-          label="Senha*"
-          icon={FiLock}
-          error={errors.password?.message?.toString()}
-          placeholder="Digite uma senha"
-          type="password"
-          {...register("password")}
-          width="16rem"
-        />
-        <Input
-          label="Confirmação*"
-          icon={FiLock}
-          error={errors.confirmPassword?.message?.toString()}
-          placeholder="Confirme a senha"
-          type="password"
-          {...register("confirmPassword")}
-          width="16rem"
-        />
+        <fieldset>
+          <Input
+            label="Nome*"
+            icon={FiUser}
+            error={errors.fullName?.message?.toString()}
+            placeholder="Digite seu nome completo"
+            {...register("fullName")}
+            width="16rem"
+          />
+        </fieldset>
+        <fieldset>
+          <Input
+            label="E-mail 1*"
+            icon={FiMail}
+            error={errors.email1?.message?.toString()}
+            placeholder="Digite seu e-mail principal"
+            {...register("email1")}
+            width="16rem"
+          />
+          <Input
+            label="E-mail 2"
+            icon={FiMail}
+            error={errors.email2?.message?.toString()}
+            placeholder="Digite um email secundário"
+            {...register("email2")}
+            width="16rem"
+          />
+        </fieldset>
+        <fieldset>
+          <Input
+            label="Telefone 1*"
+            icon={FiMail}
+            error={errors.phone1?.message?.toString()}
+            placeholder="Digite seu telefone principal"
+            {...register("phone1")}
+            width="16rem"
+          />
+          <Input
+            label="Telefone 2"
+            icon={FiMail}
+            error={errors.phone2?.message?.toString()}
+            placeholder="Digite um telefone secundário"
+            {...register("phone2")}
+            width="16rem"
+          />
+        </fieldset>
+        <fieldset>
+          <Input
+            label="Senha*"
+            icon={FiLock}
+            error={errors.password?.message?.toString()}
+            placeholder="Digite uma senha"
+            type="password"
+            {...register("password")}
+            width="16rem"
+          />
+          <Input
+            label="Confirmação*"
+            icon={FiLock}
+            error={errors.confirmPassword?.message?.toString()}
+            placeholder="Confirme a senha"
+            type="password"
+            {...register("confirmPassword")}
+            width="16rem"
+          />
+        </fieldset>
       </div>
       <Button
         type="submit"

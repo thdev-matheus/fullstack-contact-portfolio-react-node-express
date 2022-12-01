@@ -9,7 +9,7 @@ export const Container = styled.div`
 `;
 
 export const WhiteBox = styled.div`
-  width: 50%;
+  width: 35%;
   height: 100vh;
 
   display: flex;
@@ -27,7 +27,7 @@ export const WhiteBox = styled.div`
 `;
 
 export const BlackBox = styled.div`
-  width: 50%;
+  width: 65%;
   height: 100vh;
 
   display: flex;
@@ -39,7 +39,7 @@ export const BlackBox = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
+    gap: 2rem;
 
     & > p {
       & > span {
