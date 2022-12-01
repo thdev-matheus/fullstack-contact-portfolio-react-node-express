@@ -23,12 +23,15 @@ export const RegisterForm = ({ setIsRegister }: IRegisterProps) => {
   const onSubmitRegister = async (data: IRegisterData) => {
     try {
       delete data.confirmPassword;
+      !data.phone2 && delete data.phone2;
+      !data.email2 && delete data.email2;
 
       await api.post("users/", data);
       toast.success("Usuário cadastrado", { icon: "🦆🟢" });
 
       setIsRegister(false);
     } catch (error) {
+      console.log(error);
       toast.error("Parece que houve algo de errado", {
         icon: "🦆🔴",
         autoClose: 3000,

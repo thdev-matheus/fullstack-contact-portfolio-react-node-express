@@ -22,12 +22,6 @@ export const GlobalStyle = createGlobalStyle`
         --light-green: #c5f7f0;
         --white: #ecf0f1;
 
-        --black: #2c3e50;
-        --gray: #95a5a6;
-        --silver: #bdc3c7;
-        --light-pink: #fd79a8;
-        --pink: #e84393;
-        --red: #ff3030;
 
         --toastify-color-dark: var(--medium-purple);
         --toastify-color-success: #7cb342;

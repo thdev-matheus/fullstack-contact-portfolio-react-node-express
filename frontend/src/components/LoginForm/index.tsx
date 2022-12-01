@@ -26,12 +26,32 @@ export const LoginForm = () => {
     try {
       const response = await api.post("login/", data);
 
-      sessionStorage.setItem("token", response.data.token);
-      sessionStorage.setItem("username", response.data.user.username);
+      sessionStorage.setItem("token", JSON.stringify(response.data.token));
+      sessionStorage.setItem(
+        "fullName",
+        JSON.stringify(response.data.user.fullName)
+      );
+      sessionStorage.setItem(
+        "email1",
+        JSON.stringify(response.data.user.email1)
+      );
+      sessionStorage.setItem(
+        "email2",
+        JSON.stringify(response.data.user.email2)
+      );
+      sessionStorage.setItem(
+        "phone1",
+        JSON.stringify(response.data.user.phone1)
+      );
+      sessionStorage.setItem(
+        "phone2",
+        JSON.stringify(response.data.user.phone2)
+      );
+
       toast.success("Sucesso!", { icon: "🦆🟢", autoClose: 3000 });
       setTimeout(() => {
         toast.success(
-          `Seja bem-vindo(a) ao File Request, ${response.data.user.username}!`,
+          `Seja bem-vindo(a) ao Contact Portfolio, ${response.data.user.username}!`,
           {
             icon: "🦆🟢",
             autoClose: 3000,
@@ -70,7 +90,7 @@ export const LoginForm = () => {
       />
       <Button
         type="submit"
-        text="Cadastrar"
+        text="Entrar"
         height="2.5rem"
         width="16rem"
         bgColor="var(--light-green)"

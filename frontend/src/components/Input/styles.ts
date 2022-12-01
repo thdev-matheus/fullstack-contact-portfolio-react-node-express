@@ -17,7 +17,7 @@ export const Container = styled.div<ISInputProps>`
 
     & > span {
       font-size: 10pt;
-      color: var(--red);
+      color: var(--grey-purple);
     }
   }
 `;
