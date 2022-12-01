@@ -1,11 +1,12 @@
 import * as S from "./styles";
-import { useSessionInfo } from "../../appHooks";
+import { useFormatter, useSessionInfo } from "../../appHooks";
 import { FiEdit } from "react-icons/fi";
 import { ContactForm } from "../../components/ContactForm";
 
 export const Dashboard = () => {
   const { fullName, email1, email2, phone1, phone2, token, saveSession } =
     useSessionInfo();
+  const { convertPhoneNumber } = useFormatter();
 
   return (
     <S.Container>
@@ -25,12 +26,12 @@ export const Dashboard = () => {
               <div>
                 <p>E-mails: </p>
                 <span>{email1}</span>
-                <span>{email2}</span>
+                {email2 && <span>{email2}</span>}
               </div>
               <div>
                 <p>Telefone: </p>
-                <span>{phone1}</span>
-                <span>{phone2}</span>
+                <span>{convertPhoneNumber(phone1!)}</span>
+                {phone2 && <span>{convertPhoneNumber(phone2)}</span>}
               </div>
             </section>
           </section>

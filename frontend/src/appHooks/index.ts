@@ -1,3 +1,4 @@
 import { useSessionInfo } from "./Session";
+import { useFormatter } from "./Formatter";
 
-export { useSessionInfo };
+export { useSessionInfo, useFormatter };

@@ -12,7 +12,6 @@ export const registerSchema: SchemaOf<IRegisterData> = yup.object().shape({
   phone1: yup
     .string()
     .required("Campo obrigatório!")
-    .min(10, "Número inválido")
     .max(11, "Número inválido")
     .matches(
       /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
@@ -52,7 +51,6 @@ export const contactSchema: SchemaOf<IContactData> = yup.object().shape({
   phone1: yup
     .string()
     .required("Campo obrigatório!")
-    .min(10, "Número inválido")
     .max(11, "Número inválido")
     .matches(
       /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
