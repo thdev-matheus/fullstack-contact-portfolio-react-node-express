@@ -5,6 +5,10 @@ export const StyledButton = styled.button<IStyledButtonProps>`
   width: ${(props) => props.width || "100%"};
   height: ${(props) => props.height || "3rem"};
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   padding: ${(props) => props.padding || "0.5rem"};
 
   border-radius: ${(props) => props.borderRadius || "0.8rem"};

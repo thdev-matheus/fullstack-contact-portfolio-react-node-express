@@ -1,8 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
+import { InitialPage } from "../pages/InitialPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <h1>teste</h1>,
+    element: <InitialPage />,
   },
 ]);

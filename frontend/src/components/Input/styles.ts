@@ -3,7 +3,7 @@ import { ISInputProps } from "./types";
 
 export const Container = styled.div<ISInputProps>`
   width: ${(props) => props.width || "100%"};
-  height: 3rem;
+  height: 2.5rem;
 
   text-align: left;
 
@@ -16,6 +16,7 @@ export const Container = styled.div<ISInputProps>`
     color: ${(props) => props.color || "var(--white)"};
 
     & > span {
+      font-size: 10pt;
       color: var(--red);
     }
   }
@@ -62,7 +63,7 @@ export const InputContainer = styled.div<ISInputProps>`
   }
 
   svg {
-    font-size: 16pt;
+    font-size: 10pt;
     margin-right: 0.5rem;
   }
 
