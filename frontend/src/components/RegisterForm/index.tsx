@@ -1,4 +1,4 @@
-import { FiUser, FiLock, FiMail } from "react-icons/fi";
+import { FiUser, FiLock, FiMail, FiPhone } from "react-icons/fi";
 import { Input, Button } from "../";
 import * as S from "./styles";
 import { IRegisterData } from "../../globalTypes";
@@ -80,7 +80,7 @@ export const RegisterForm = ({ setIsRegister }: IRegisterProps) => {
         <fieldset>
           <Input
             label="Telefone 1*"
-            icon={FiMail}
+            icon={FiPhone}
             error={errors.phone1?.message?.toString()}
             placeholder="Digite seu telefone principal"
             {...register("phone1")}
@@ -88,7 +88,7 @@ export const RegisterForm = ({ setIsRegister }: IRegisterProps) => {
           />
           <Input
             label="Telefone 2"
-            icon={FiMail}
+            icon={FiPhone}
             error={errors.phone2?.message?.toString()}
             placeholder="Digite um telefone secundário"
             {...register("phone2")}

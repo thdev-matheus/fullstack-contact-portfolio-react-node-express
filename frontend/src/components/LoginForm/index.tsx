@@ -1,6 +1,6 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import { FiUser, FiLock } from "react-icons/fi";
+import { FiMail, FiLock } from "react-icons/fi";
 import { ILoginData } from "../../globalTypes";
 import { loginSchema } from "../../schemas";
 import { Input, Button } from "../";
@@ -75,7 +75,7 @@ export const LoginForm = () => {
     <S.Container onSubmit={handleSubmit(onSubmitLogin)}>
       <Input
         label="email"
-        icon={FiUser}
+        icon={FiMail}
         error={errors.email?.message?.toString()}
         placeholder="Digite seu e-mail"
         {...register("email")}

@@ -1,4 +1,4 @@
-import { FiUser, FiMail } from "react-icons/fi";
+import { FiUser, FiMail, FiPhone } from "react-icons/fi";
 import { Input, Button } from "..";
 import * as S from "./styles";
 import { IContactData } from "../../globalTypes";
@@ -7,8 +7,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { contactSchema } from "../../schemas";
 import { toast } from "react-toastify";
 import { api } from "../../services/api";
+import { useSessionInfo } from "../../appHooks";
 
 export const ContactForm = () => {
+  const { token } = useSessionInfo();
   const {
     register,
     handleSubmit,
@@ -24,7 +26,12 @@ export const ContactForm = () => {
       !data.phone2 && delete data.phone2;
       !data.email2 && delete data.email2;
 
-      await api.post("contacts/", data);
+      await api.post("contacts/", data, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
       toast.success("Contato salvo", { icon: "🦆🟢" });
 
       reset();
@@ -79,7 +86,7 @@ export const ContactForm = () => {
         <fieldset>
           <Input
             label="Telefone 1*"
-            icon={FiMail}
+            icon={FiPhone}
             error={errors.phone1?.message?.toString()}
             placeholder="Digite um telefone do contato"
             {...register("phone1")}
@@ -87,7 +94,7 @@ export const ContactForm = () => {
           />
           <Input
             label="Telefone 2"
-            icon={FiMail}
+            icon={FiPhone}
             error={errors.phone2?.message?.toString()}
             placeholder="Digite outro telefone do contato"
             {...register("phone2")}
