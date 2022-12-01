@@ -51,7 +51,9 @@ export const LoginForm = () => {
       toast.success("Sucesso!", { icon: "🦆🟢", autoClose: 3000 });
       setTimeout(() => {
         toast.success(
-          `Seja bem-vindo(a) ao Contact Portfolio, ${response.data.user.username}!`,
+          `Seja bem-vindo(a) ao Contact Portfolio, ${
+            response.data.user.fullName.split(" ")[0]
+          }!`,
           {
             icon: "🦆🟢",
             autoClose: 3000,
