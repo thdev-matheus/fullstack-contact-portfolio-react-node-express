@@ -54,6 +54,20 @@ export const useSessionInfo = (): ISessionHook => {
     }
   };
 
+  const delUser = async (): Promise<void> => {
+    try {
+      await api.delete(`users/`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+    } catch (error) {
+      toast.error("Problemas ao deletar o usuário", {
+        icon: "🦆🔴",
+      });
+    }
+  };
+
   const delContact = async (contactId: string): Promise<void> => {
     try {
       await api.delete(`contacts/${contactId}`, {
@@ -78,6 +92,7 @@ export const useSessionInfo = (): ISessionHook => {
     id,
     saveSession,
     getUser,
+    delUser,
     delContact,
   };
 };

@@ -28,7 +28,7 @@ export const Container = styled.div`
 
       display: flex;
       align-items: center;
-      gap: 1rem;
+      justify-content: space-between;
 
       padding: 1rem 1rem;
       margin-bottom: 0.5rem;
@@ -36,9 +36,16 @@ export const Container = styled.div`
       box-shadow: 0 4px 4px #00000050;
 
       background-color: var(--medium-purple);
+      & > div {
+        width: 100%;
 
-      & > img {
-        height: 2rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        & > img {
+          height: 2rem;
+        }
       }
     }
   }
@@ -80,17 +87,22 @@ export const BoxUser = styled.div`
         color: var(--light-green);
       }
 
-      & > svg {
-        color: var(--light-green);
-        font-size: 16pt;
+      & > section {
+        display: flex;
+        gap: 1rem;
 
-        cursor: pointer;
+        & > svg {
+          color: var(--light-green);
+          font-size: 16pt;
 
-        transition: 0.8s;
+          cursor: pointer;
 
-        :hover {
-          color: var(--light-purple);
           transition: 0.8s;
+
+          :hover {
+            color: var(--light-purple);
+            transition: 0.8s;
+          }
         }
       }
 

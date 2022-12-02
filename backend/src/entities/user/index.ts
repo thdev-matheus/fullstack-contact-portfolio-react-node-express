@@ -43,7 +43,10 @@ export class User {
   @Column({ type: "varchar", nullable: true })
   phone2!: string | null;
 
-  @OneToMany((type) => Contact, (contact) => contact.user, { eager: true })
+  @OneToMany((type) => Contact, (contact) => contact.user, {
+    eager: true,
+    onDelete: "CASCADE",
+  })
   contacts!: Contact[];
 
   constructor() {

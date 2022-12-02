@@ -13,5 +13,6 @@ export interface ISessionHook {
     value: string | number | object | object[]
   ) => void;
   getUser: () => Promise<IUser | any>;
+  delUser: () => Promise<void>;
   delContact: (contactId: string) => Promise<void>;
 }

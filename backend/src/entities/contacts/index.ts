@@ -22,7 +22,7 @@ export class Contact {
   @Column({ type: "varchar", nullable: true })
   phone2!: string;
 
-  @ManyToOne((type) => User, { nullable: false })
+  @ManyToOne((type) => User, { nullable: false, onDelete: "CASCADE" })
   @JoinColumn()
   user!: User;
 
