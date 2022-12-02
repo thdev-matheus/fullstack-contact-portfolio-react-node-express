@@ -1,6 +1,11 @@
 import * as yup from "yup";
 import { SchemaOf } from "yup";
-import { IContactData, ILoginData, IRegisterData } from "../globalTypes";
+import {
+  IContactData,
+  ILoginData,
+  IRegisterData,
+  IUpdateUserData,
+} from "../globalTypes";
 
 export const registerSchema: SchemaOf<IRegisterData> = yup.object().shape({
   fullName: yup.string().required("Campo obrigatório!").min(5),
@@ -58,4 +63,20 @@ export const contactSchema: SchemaOf<IContactData> = yup.object().shape({
     ),
 
   phone2: yup.string(),
+});
+
+export const updateUserSchema: SchemaOf<IUpdateUserData> = yup.object().shape({
+  fullName: yup.string(),
+
+  email1: yup.string(),
+
+  email2: yup.string(),
+
+  phone1: yup.string(),
+
+  phone2: yup.string(),
+
+  password: yup.string(),
+
+  oldPassword: yup.string().required("Campo obrigatório"),
 });

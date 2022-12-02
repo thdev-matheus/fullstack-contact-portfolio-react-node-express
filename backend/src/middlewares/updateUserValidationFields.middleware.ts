@@ -9,7 +9,7 @@ export const updateUserValidationFieldsMiddleware =
       const data: IUserUpdate = req.body;
 
       await schema.validate(data, {
-        abortEarly: false,
+        abortEarly: true,
         stripUnknown: true,
       });
 

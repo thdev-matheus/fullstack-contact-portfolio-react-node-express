@@ -27,6 +27,7 @@ export const LoginForm = () => {
       const response = await api.post("login/", data);
 
       sessionStorage.setItem("token", JSON.stringify(response.data.token));
+      sessionStorage.setItem("id", JSON.stringify(response.data.user.id));
       sessionStorage.setItem(
         "fullName",
         JSON.stringify(response.data.user.fullName)

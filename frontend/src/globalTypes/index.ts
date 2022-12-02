@@ -8,6 +8,16 @@ export interface IRegisterData {
   confirmPassword?: string;
 }
 
+export interface IUpdateUserData {
+  fullName?: string;
+  email1?: string;
+  email2?: string;
+  phone1?: string;
+  phone2?: string;
+  password?: string;
+  oldPassword: string;
+}
+
 export interface ILoginData {
   email: string;
   password: string;

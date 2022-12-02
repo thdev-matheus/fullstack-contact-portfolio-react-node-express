@@ -7,6 +7,7 @@ export interface ISessionHook {
   phone1: string | null;
   phone2: string | null;
   token: string | null;
+  id: string | null;
   saveSession: (
     key: string,
     value: string | number | object | object[]

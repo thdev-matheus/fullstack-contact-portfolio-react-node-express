@@ -10,6 +10,7 @@ export const useSessionInfo = (): ISessionHook => {
   let phone1 = sessionStorage.getItem("phone1");
   let phone2 = sessionStorage.getItem("phone2");
   let token = sessionStorage.getItem("token");
+  let id = sessionStorage.getItem("id");
 
   fullName = fullName ? JSON.parse(fullName) : fullName;
   email1 = email1 ? JSON.parse(email1) : email1;
@@ -17,6 +18,7 @@ export const useSessionInfo = (): ISessionHook => {
   phone1 = phone1 ? JSON.parse(phone1) : phone1;
   phone2 = phone2 ? JSON.parse(phone2) : phone2;
   token = token ? JSON.parse(token) : token;
+  id = id ? JSON.parse(id) : id;
 
   const saveSession = (
     key: string,
@@ -33,6 +35,16 @@ export const useSessionInfo = (): ISessionHook => {
           Authorization: `Bearer ${token}`,
         },
       });
+
+      sessionStorage.setItem("id", JSON.stringify(response.data.id));
+      sessionStorage.setItem(
+        "fullName",
+        JSON.stringify(response.data.fullName)
+      );
+      sessionStorage.setItem("email1", JSON.stringify(response.data.email1));
+      sessionStorage.setItem("email2", JSON.stringify(response.data.email2));
+      sessionStorage.setItem("phone1", JSON.stringify(response.data.phone1));
+      sessionStorage.setItem("phone2", JSON.stringify(response.data.phone2));
 
       return response.data;
     } catch (error) {
@@ -63,6 +75,7 @@ export const useSessionInfo = (): ISessionHook => {
     phone1,
     phone2,
     token,
+    id,
     saveSession,
     getUser,
     delContact,
