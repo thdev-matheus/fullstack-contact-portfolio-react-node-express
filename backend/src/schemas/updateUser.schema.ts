@@ -3,7 +3,7 @@ import { SchemaOf } from "yup";
 import { IUserUpdate } from "../services/user/types";
 
 export const updateUserSchema: SchemaOf<IUserUpdate> = yup.object().shape({
-  fullName: yup.string().min(5),
+  fullName: yup.string().min(5, "fullName: at least 5 characters"),
 
   email1: yup.string().email("email1: Invalid e-mail"),
 

@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { createUsercontroller } from "../../controllers/user/createUser.controller";
 import { retrieveUserController } from "../../controllers/user/retrieveUser.controller";
-import { softDeleteUserController } from "../../controllers/user/softDeleteUser.controller";
+import { deleteUserController } from "../../controllers/user/deleteUser.controller";
 import { updateUserController } from "../../controllers/user/updateUser.controller";
 import { createUserValidationFieldsMiddleware } from "../../middlewares/createUserValidationFields.middleware";
 import { isActiveMiddleware } from "../../middlewares/isActive.middleware";
@@ -28,7 +28,7 @@ export const userRoutes = () => {
     updateUserValidationFieldsMiddleware(updateUserSchema),
     updateUserController
   );
-  router.delete("", softDeleteUserController);
+  router.delete("", deleteUserController);
 
   return router;
 };
