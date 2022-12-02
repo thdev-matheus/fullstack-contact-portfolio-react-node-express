@@ -9,7 +9,7 @@ import { IUser } from "../../globalTypes";
 import { UpdateUserModal } from "../../components/UpdateUserModal";
 import { DeleteUserModal } from "../../components/DeleteUserModal";
 import { Button } from "../../components";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const Dashboard = () => {
   const [user, setUser] = useState<IUser>({} as IUser);

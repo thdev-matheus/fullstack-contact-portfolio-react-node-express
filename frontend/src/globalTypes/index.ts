@@ -31,6 +31,14 @@ export interface IContactData {
   phone2?: string;
 }
 
+export interface IUpdateContactData {
+  name?: string;
+  email1?: string;
+  email2?: string;
+  phone1?: string;
+  phone2?: string;
+}
+
 export interface IUser {
   id: string;
   isActive: boolean;

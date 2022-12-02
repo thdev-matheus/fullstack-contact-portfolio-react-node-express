@@ -6,7 +6,9 @@ import { updateContactController } from "../../controllers/contact/updateContact
 import { createContactValidationFieldsMiddleware } from "../../middlewares/createContactValidationFields.middleware";
 import { isActiveMiddleware } from "../../middlewares/isActive.middleware";
 import { isAuthenticatedMiddleware } from "../../middlewares/isAuthenticated.middleware";
+import { updateContactValidationFieldsMiddleware } from "../../middlewares/updateContactValidationFields.middleware";
 import { createContactSchema } from "../../schemas/createContact.schema";
+import { updateContactSchema } from "../../schemas/updateContact.schema";
 
 const router = Router();
 
@@ -20,7 +22,11 @@ export const contactRoutes = () => {
     createContactController
   );
   router.get("", retrieveAllUserContactsController);
-  router.patch("/:contactId/", updateContactController);
+  router.patch(
+    "/:contactId/",
+    updateContactValidationFieldsMiddleware(updateContactSchema),
+    updateContactController
+  );
   router.delete("/:contactId/", deleteContactController);
 
   return router;

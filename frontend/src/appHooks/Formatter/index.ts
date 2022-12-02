@@ -11,6 +11,8 @@ export const useFormatter = (): IFormatter => {
     const kind = message.split(" ")[0];
 
     switch (kind) {
+      case "name:":
+        return "Nome: O novo nome precisa ter ao menos 5 caracteres";
       case "fullName":
         return "Nome: O novo nome precisa ter ao menos 5 caracteres";
       case "email1:":

@@ -4,6 +4,7 @@ import {
   IContactData,
   ILoginData,
   IRegisterData,
+  IUpdateContactData,
   IUpdateUserData,
 } from "../globalTypes";
 
@@ -80,3 +81,17 @@ export const updateUserSchema: SchemaOf<IUpdateUserData> = yup.object().shape({
 
   oldPassword: yup.string().required("Campo obrigatório"),
 });
+
+export const updateContactSchema: SchemaOf<IUpdateContactData> = yup
+  .object()
+  .shape({
+    name: yup.string(),
+
+    email1: yup.string(),
+
+    email2: yup.string(),
+
+    phone1: yup.string(),
+
+    phone2: yup.string(),
+  });
