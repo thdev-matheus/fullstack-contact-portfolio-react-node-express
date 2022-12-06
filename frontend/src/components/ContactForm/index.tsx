@@ -1,30 +1,30 @@
 import { FiUser, FiMail, FiPhone } from "react-icons/fi";
-import { Input, Button } from "..";
-import * as S from "./styles";
-import { IContactData } from "../../globalTypes";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { contactSchema } from "../../schemas";
 import { toast } from "react-toastify";
 import { api } from "../../services/api";
 import { useSessionInfo } from "../../appHooks";
-import { IContactFormProps } from "./types";
+import * as schema from "../../schemas";
+import * as t from "./types";
+import * as Comp from "../";
+import * as S from "./styles";
+import * as gt from "../../globalTypes";
 
-export const ContactForm = ({ setUser }: IContactFormProps) => {
+export const ContactForm = ({ setUser }: t.IContactFormProps) => {
   const { token } = useSessionInfo();
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<IContactData>({
+  } = useForm<gt.IContactData>({
     reValidateMode: "onSubmit",
-    resolver: yupResolver(contactSchema),
+    resolver: yupResolver(schema.contactSchema),
   });
 
   const { getUser } = useSessionInfo();
 
-  const onSubmitContact = async (data: IContactData) => {
+  const onSubmitContact = async (data: gt.IContactData) => {
     try {
       !data.phone2 && delete data.phone2;
       !data.email2 && delete data.email2;
@@ -61,7 +61,7 @@ export const ContactForm = ({ setUser }: IContactFormProps) => {
       <h3>Cadastrar contato</h3>
       <div>
         <fieldset>
-          <Input
+          <Comp.Input
             label="Nome*"
             icon={FiUser}
             error={errors.name?.message?.toString()}
@@ -71,7 +71,7 @@ export const ContactForm = ({ setUser }: IContactFormProps) => {
           />
         </fieldset>
         <fieldset>
-          <Input
+          <Comp.Input
             label="E-mail 1*"
             icon={FiMail}
             error={errors.email1?.message?.toString()}
@@ -79,7 +79,7 @@ export const ContactForm = ({ setUser }: IContactFormProps) => {
             {...register("email1")}
             width="16rem"
           />
-          <Input
+          <Comp.Input
             label="E-mail 2"
             icon={FiMail}
             error={errors.email2?.message?.toString()}
@@ -89,7 +89,7 @@ export const ContactForm = ({ setUser }: IContactFormProps) => {
           />
         </fieldset>
         <fieldset>
-          <Input
+          <Comp.Input
             label="Telefone 1*"
             icon={FiPhone}
             error={errors.phone1?.message?.toString()}
@@ -97,7 +97,7 @@ export const ContactForm = ({ setUser }: IContactFormProps) => {
             {...register("phone1")}
             width="16rem"
           />
-          <Input
+          <Comp.Input
             label="Telefone 2"
             icon={FiPhone}
             error={errors.phone2?.message?.toString()}
@@ -107,7 +107,7 @@ export const ContactForm = ({ setUser }: IContactFormProps) => {
           />
         </fieldset>
       </div>
-      <Button
+      <Comp.Button
         type="submit"
         text="Salvar"
         height="2.5rem"

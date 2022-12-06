@@ -1,26 +1,26 @@
 import { FiUser, FiLock, FiMail, FiPhone } from "react-icons/fi";
-import { Input, Button } from "../";
+import * as Comp from "../";
 import * as S from "./styles";
-import { IRegisterData } from "../../globalTypes";
+import * as gt from "../../globalTypes";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { registerSchema } from "../../schemas";
-import { IRegisterProps } from "./types";
+import * as schema from "../../schemas";
+import * as t from "./types";
 import { toast } from "react-toastify";
 import { api } from "../../services/api";
 
-export const RegisterForm = ({ setIsRegister }: IRegisterProps) => {
+export const RegisterForm = ({ setIsRegister }: t.IRegisterProps) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<IRegisterData>({
+  } = useForm<gt.IRegisterData>({
     reValidateMode: "onSubmit",
-    resolver: yupResolver(registerSchema),
+    resolver: yupResolver(schema.registerSchema),
   });
 
-  const onSubmitRegister = async (data: IRegisterData) => {
+  const onSubmitRegister = async (data: gt.IRegisterData) => {
     try {
       delete data.confirmPassword;
       !data.phone2 && delete data.phone2;
@@ -50,7 +50,7 @@ export const RegisterForm = ({ setIsRegister }: IRegisterProps) => {
     <S.Container onSubmit={handleSubmit(onSubmitRegister)}>
       <div>
         <fieldset>
-          <Input
+          <Comp.Input
             label="Nome*"
             icon={FiUser}
             error={errors.fullName?.message?.toString()}
@@ -60,7 +60,7 @@ export const RegisterForm = ({ setIsRegister }: IRegisterProps) => {
           />
         </fieldset>
         <fieldset>
-          <Input
+          <Comp.Input
             label="E-mail 1*"
             icon={FiMail}
             error={errors.email1?.message?.toString()}
@@ -68,7 +68,7 @@ export const RegisterForm = ({ setIsRegister }: IRegisterProps) => {
             {...register("email1")}
             width="16rem"
           />
-          <Input
+          <Comp.Input
             label="E-mail 2"
             icon={FiMail}
             error={errors.email2?.message?.toString()}
@@ -78,7 +78,7 @@ export const RegisterForm = ({ setIsRegister }: IRegisterProps) => {
           />
         </fieldset>
         <fieldset>
-          <Input
+          <Comp.Input
             label="Telefone 1*"
             icon={FiPhone}
             error={errors.phone1?.message?.toString()}
@@ -86,7 +86,7 @@ export const RegisterForm = ({ setIsRegister }: IRegisterProps) => {
             {...register("phone1")}
             width="16rem"
           />
-          <Input
+          <Comp.Input
             label="Telefone 2"
             icon={FiPhone}
             error={errors.phone2?.message?.toString()}
@@ -96,7 +96,7 @@ export const RegisterForm = ({ setIsRegister }: IRegisterProps) => {
           />
         </fieldset>
         <fieldset>
-          <Input
+          <Comp.Input
             label="Senha*"
             icon={FiLock}
             error={errors.password?.message?.toString()}
@@ -105,7 +105,7 @@ export const RegisterForm = ({ setIsRegister }: IRegisterProps) => {
             {...register("password")}
             width="16rem"
           />
-          <Input
+          <Comp.Input
             label="Confirmação*"
             icon={FiLock}
             error={errors.confirmPassword?.message?.toString()}
@@ -116,7 +116,7 @@ export const RegisterForm = ({ setIsRegister }: IRegisterProps) => {
           />
         </fieldset>
       </div>
-      <Button
+      <Comp.Button
         type="submit"
         text="Cadastrar"
         height="2.5rem"

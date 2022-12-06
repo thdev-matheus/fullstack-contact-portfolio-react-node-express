@@ -1,13 +1,13 @@
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-hook-form";
-import { FiMail, FiLock } from "react-icons/fi";
-import { ILoginData } from "../../globalTypes";
-import { loginSchema } from "../../schemas";
-import { Input, Button } from "../";
-import * as S from "./styles";
 import { api } from "../../services/api";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
+import { FiMail, FiLock } from "react-icons/fi";
+import * as gt from "../../globalTypes";
+import * as schema from "../../schemas";
+import * as Comp from "../";
+import * as S from "./styles";
 
 export const LoginForm = () => {
   const navigate = useNavigate();
@@ -17,12 +17,12 @@ export const LoginForm = () => {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<ILoginData>({
+  } = useForm<gt.ILoginData>({
     reValidateMode: "onSubmit",
-    resolver: yupResolver(loginSchema),
+    resolver: yupResolver(schema.loginSchema),
   });
 
-  const onSubmitLogin = async (data: ILoginData) => {
+  const onSubmitLogin = async (data: gt.ILoginData) => {
     try {
       const response = await api.post("login/", data);
 
@@ -74,7 +74,7 @@ export const LoginForm = () => {
 
   return (
     <S.Container onSubmit={handleSubmit(onSubmitLogin)}>
-      <Input
+      <Comp.Input
         label="email"
         icon={FiMail}
         error={errors.email?.message?.toString()}
@@ -82,7 +82,7 @@ export const LoginForm = () => {
         {...register("email")}
         width="16rem"
       />
-      <Input
+      <Comp.Input
         label="Senha"
         icon={FiLock}
         error={errors.password?.message?.toString()}
@@ -91,7 +91,7 @@ export const LoginForm = () => {
         {...register("password")}
         width="16rem"
       />
-      <Button
+      <Comp.Button
         type="submit"
         text="Entrar"
         height="2.5rem"

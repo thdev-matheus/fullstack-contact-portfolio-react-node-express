@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { FiTrash2, FiEdit } from "react-icons/fi";
 import { useSessionInfo } from "../../appHooks";
-import { UpdateContactModal } from "../UpdateContactModal";
+import * as Comp from "../";
 import * as S from "./styles";
-import { IContactCardProps } from "./types";
+import * as t from "./types";
 
-export const ContactCard = ({ contact, setUser }: IContactCardProps) => {
+export const ContactCard = ({ contact, setUser }: t.IContactCardProps) => {
   const { getUser, delContact } = useSessionInfo();
   const [editContactModal, setEditContactModal] = useState(false);
   const [contactId, setContactId] = useState("");
@@ -19,7 +19,7 @@ export const ContactCard = ({ contact, setUser }: IContactCardProps) => {
   return (
     <>
       {editContactModal && (
-        <UpdateContactModal
+        <Comp.UpdateContactModal
           contactId={contactId}
           setEditContactModal={setEditContactModal}
           setUser={setUser}

@@ -1,5 +1,5 @@
-import { Container, BlackBox, WhiteBox } from "./styles";
-import { RegisterForm, LoginForm } from "../../components";
+import * as S from "./styles";
+import * as Comp from "../../components";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence, MotionConfig } from "framer-motion";
 import { toast } from "react-toastify";
@@ -18,11 +18,11 @@ export const InitialPage = () => {
     );
   }, []);
   return (
-    <Container>
-      <WhiteBox>
+    <S.Container>
+      <S.WhiteBox>
         <img src="https://i.ibb.co/D5kCh4L/Cell-phone-amico.png" alt="hello" />
-      </WhiteBox>
-      <BlackBox>
+      </S.WhiteBox>
+      <S.BlackBox>
         <AnimatePresence custom="wait">
           <MotionConfig transition={{ duration: 0.8 }}>
             {isRegister ? (
@@ -33,7 +33,7 @@ export const InitialPage = () => {
                 exit={{ x: -100, opacity: 0 }}
               >
                 <h1>Cadastro</h1>
-                <RegisterForm setIsRegister={setIsRegister} />
+                <Comp.RegisterForm setIsRegister={setIsRegister} />
                 <p>
                   Já tem cadastro? Faça
                   <span onClick={() => setIsRegister(false)}> login</span>
@@ -47,7 +47,7 @@ export const InitialPage = () => {
                 exit={{ x: -100, opacity: 0 }}
               >
                 <h1>Login</h1>
-                <LoginForm />
+                <Comp.LoginForm />
                 <p>
                   Não tem login? Faça seu
                   <span onClick={() => setIsRegister(true)}> cadastro</span>
@@ -56,7 +56,7 @@ export const InitialPage = () => {
             )}
           </MotionConfig>
         </AnimatePresence>
-      </BlackBox>
-    </Container>
+      </S.BlackBox>
+    </S.Container>
   );
 };

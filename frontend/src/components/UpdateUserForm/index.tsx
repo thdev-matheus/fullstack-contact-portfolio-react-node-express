@@ -1,31 +1,31 @@
-import { FiUser, FiLock, FiMail, FiPhone } from "react-icons/fi";
-import { Input, Button } from "..";
-import * as S from "./styles";
-import { IUpdateUserData } from "../../globalTypes";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { updateUserSchema } from "../../schemas";
 import { toast } from "react-toastify";
 import { api } from "../../services/api";
-import { IUpdateUserProps } from "./types";
 import { useFormatter, useSessionInfo } from "../../appHooks";
+import { FiUser, FiLock, FiMail, FiPhone } from "react-icons/fi";
+import * as Comp from "../";
+import * as S from "./styles";
+import * as gt from "../../globalTypes";
+import * as schema from "../../schemas";
+import * as t from "./types";
 
-export const UpdateUserForm = ({ handleFetchUser }: IUpdateUserProps) => {
+export const UpdateUserForm = ({ handleFetchUser }: t.IUpdateUserProps) => {
   console.log("chegou");
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<IUpdateUserData>({
+  } = useForm<gt.IUpdateUserData>({
     reValidateMode: "onSubmit",
-    resolver: yupResolver(updateUserSchema),
+    resolver: yupResolver(schema.updateUserSchema),
   });
 
   const { token } = useSessionInfo();
   const { responseError } = useFormatter();
 
-  const onSubmitUpdate = async (data: IUpdateUserData) => {
+  const onSubmitUpdate = async (data: gt.IUpdateUserData) => {
     try {
       if (
         !data.phone1 &&
@@ -89,7 +89,7 @@ export const UpdateUserForm = ({ handleFetchUser }: IUpdateUserProps) => {
     <S.Container onSubmit={handleSubmit(onSubmitUpdate)}>
       <div>
         <fieldset>
-          <Input
+          <Comp.Input
             label="Nome"
             icon={FiUser}
             error={errors.fullName?.message?.toString()}
@@ -99,7 +99,7 @@ export const UpdateUserForm = ({ handleFetchUser }: IUpdateUserProps) => {
           />
         </fieldset>
         <fieldset>
-          <Input
+          <Comp.Input
             label="E-mail 1"
             icon={FiMail}
             error={errors.email1?.message?.toString()}
@@ -107,7 +107,7 @@ export const UpdateUserForm = ({ handleFetchUser }: IUpdateUserProps) => {
             {...register("email1")}
             width="16rem"
           />
-          <Input
+          <Comp.Input
             label="E-mail 2"
             icon={FiMail}
             error={errors.email2?.message?.toString()}
@@ -117,7 +117,7 @@ export const UpdateUserForm = ({ handleFetchUser }: IUpdateUserProps) => {
           />
         </fieldset>
         <fieldset>
-          <Input
+          <Comp.Input
             label="Telefone 1"
             icon={FiPhone}
             error={errors.phone1?.message?.toString()}
@@ -125,7 +125,7 @@ export const UpdateUserForm = ({ handleFetchUser }: IUpdateUserProps) => {
             {...register("phone1")}
             width="16rem"
           />
-          <Input
+          <Comp.Input
             label="Telefone 2"
             icon={FiPhone}
             error={errors.phone2?.message?.toString()}
@@ -135,7 +135,7 @@ export const UpdateUserForm = ({ handleFetchUser }: IUpdateUserProps) => {
           />
         </fieldset>
         <fieldset>
-          <Input
+          <Comp.Input
             label="Senha"
             icon={FiLock}
             error={errors.password?.message?.toString()}
@@ -144,7 +144,7 @@ export const UpdateUserForm = ({ handleFetchUser }: IUpdateUserProps) => {
             {...register("password")}
             width="16rem"
           />
-          <Input
+          <Comp.Input
             label="Senha Atual*"
             icon={FiLock}
             error={errors.oldPassword?.message?.toString()}
@@ -155,7 +155,7 @@ export const UpdateUserForm = ({ handleFetchUser }: IUpdateUserProps) => {
           />
         </fieldset>
       </div>
-      <Button
+      <Comp.Button
         type="submit"
         text="Cadastrar"
         height="2.5rem"

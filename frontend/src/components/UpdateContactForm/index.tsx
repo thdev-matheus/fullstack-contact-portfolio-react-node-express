@@ -1,32 +1,31 @@
 import { FiUser, FiMail, FiPhone } from "react-icons/fi";
-import { Input, Button } from "..";
-import * as S from "./styles";
-import { IUpdateContactData } from "../../globalTypes";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { updateContactSchema } from "../../schemas";
 import { toast } from "react-toastify";
 import { api } from "../../services/api";
 import { useFormatter, useSessionInfo } from "../../appHooks";
-import { IUpdateContactFormProps } from "./types";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as Comp from "..";
+import * as S from "./styles";
+import * as gt from "../../globalTypes";
+import * as schema from "../../schemas";
+import * as t from "./types";
 
 export const UpdateContactForm = ({
   contactId,
   handleUpdateContacts,
-}: IUpdateContactFormProps) => {
+}: t.IUpdateContactFormProps) => {
   const { token } = useSessionInfo();
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
-  } = useForm<IUpdateContactData>({
+  } = useForm<gt.IUpdateContactData>({
     reValidateMode: "onSubmit",
-    resolver: yupResolver(updateContactSchema),
+    resolver: yupResolver(schema.updateContactSchema),
   });
   const { responseError } = useFormatter();
 
-  const onSubmitEditContact = async (data: IUpdateContactData) => {
+  const onSubmitEditContact = async (data: gt.IUpdateContactData) => {
     try {
       if (
         !data.phone1 &&
@@ -88,7 +87,7 @@ export const UpdateContactForm = ({
     <S.Container onSubmit={handleSubmit(onSubmitEditContact)}>
       <div>
         <fieldset>
-          <Input
+          <Comp.Input
             label="Nome"
             icon={FiUser}
             error={errors.name?.message?.toString()}
@@ -98,7 +97,7 @@ export const UpdateContactForm = ({
           />
         </fieldset>
         <fieldset>
-          <Input
+          <Comp.Input
             label="E-mail 1"
             icon={FiMail}
             error={errors.email1?.message?.toString()}
@@ -106,7 +105,7 @@ export const UpdateContactForm = ({
             {...register("email1")}
             width="16rem"
           />
-          <Input
+          <Comp.Input
             label="E-mail 2"
             icon={FiMail}
             error={errors.email2?.message?.toString()}
@@ -116,7 +115,7 @@ export const UpdateContactForm = ({
           />
         </fieldset>
         <fieldset>
-          <Input
+          <Comp.Input
             label="Telefone 1"
             icon={FiPhone}
             error={errors.phone1?.message?.toString()}
@@ -124,7 +123,7 @@ export const UpdateContactForm = ({
             {...register("phone1")}
             width="16rem"
           />
-          <Input
+          <Comp.Input
             label="Telefone 2"
             icon={FiPhone}
             error={errors.phone2?.message?.toString()}
@@ -134,7 +133,7 @@ export const UpdateContactForm = ({
           />
         </fieldset>
       </div>
-      <Button
+      <Comp.Button
         type="submit"
         text="Atualizar"
         height="2.5rem"
