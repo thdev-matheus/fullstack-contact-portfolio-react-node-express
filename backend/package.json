@@ -10,7 +10,8 @@
     "dockerdev": "ts-node-dev --ignore-watch node_modules src/server.ts",
     "typeorm": "typeorm-ts-node-commonjs",
     "build": "tsc",
-    "start": "node dist/server.js"
+    "start": "ts-node-dev --ignore-watch node_modules src/server.ts",
+    "startbuild": "node dist/server.js"
   },
   "keywords": [],
   "author": "Matheus Henrique Vieira Cardoso",
