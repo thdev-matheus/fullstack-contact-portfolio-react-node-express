@@ -1,13 +1,13 @@
-import { IUpdateUserModalProps } from "./types";
-import * as S from "./styles";
-import { UpdateUserForm } from "../UpdateUserForm";
 import { useSessionInfo } from "../../appHooks";
 import { FiXSquare } from "react-icons/fi";
+import * as t from "./types";
+import * as S from "./styles";
+import * as Comp from "../UpdateUserForm";
 
 export const UpdateUserModal = ({
   setEditUserModal,
   setUser,
-}: IUpdateUserModalProps) => {
+}: t.IUpdateUserModalProps) => {
   const { getUser } = useSessionInfo();
 
   const handleFetchUser = async () => {
@@ -20,8 +20,7 @@ export const UpdateUserModal = ({
       <S.FormContainer>
         <FiXSquare onClick={() => setEditUserModal(false)} />
         <h2>Editar Contato</h2>
-
-        <UpdateUserForm handleFetchUser={handleFetchUser} />
+        <Comp.UpdateUserForm handleFetchUser={handleFetchUser} />
       </S.FormContainer>
     </S.Container>
   );

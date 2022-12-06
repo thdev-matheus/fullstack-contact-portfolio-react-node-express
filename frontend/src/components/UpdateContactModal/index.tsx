@@ -1,14 +1,14 @@
-import { IUpdateContactModalProps } from "./types";
-import * as S from "./styles";
 import { useSessionInfo } from "../../appHooks";
 import { FiXSquare } from "react-icons/fi";
-import { UpdateContactForm } from "../UpdateContactForm";
+import * as t from "./types";
+import * as S from "./styles";
+import * as Comp from "../";
 
 export const UpdateContactModal = ({
   contactId,
   setEditContactModal,
   setUser,
-}: IUpdateContactModalProps) => {
+}: t.IUpdateContactModalProps) => {
   const { getUser } = useSessionInfo();
 
   const handleUpdateContacts = async () => {
@@ -22,7 +22,7 @@ export const UpdateContactModal = ({
         <FiXSquare onClick={() => setEditContactModal(false)} />
         <h2>Editar Contato</h2>
 
-        <UpdateContactForm
+        <Comp.UpdateContactForm
           handleUpdateContacts={handleUpdateContacts}
           contactId={contactId}
         />

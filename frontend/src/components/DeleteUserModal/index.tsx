@@ -1,15 +1,15 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { IUpdateUserModalProps } from "./types";
-import * as S from "./styles";
 import { useSessionInfo } from "../../appHooks";
 import { FiXSquare } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { Button } from "../Button";
+import * as t from "./types";
+import * as S from "./styles";
+import * as Comp from "../";
 
 export const DeleteUserModal = ({
   setDeleteUserModal,
-}: IUpdateUserModalProps) => {
+}: t.IUpdateUserModalProps) => {
   const navigate = useNavigate();
 
   const { delUser } = useSessionInfo();
@@ -29,7 +29,7 @@ export const DeleteUserModal = ({
         <FiXSquare onClick={() => setDeleteUserModal(false)} />
         <h2>Deseja deletar esta conta?</h2>
         <div>
-          <Button
+          <Comp.Button
             onClick={() => handleDeleteUser()}
             type="button"
             text="Deletar"
@@ -40,7 +40,7 @@ export const DeleteUserModal = ({
             hBgColor="var(--medium-purple)"
             hColor="var(--light-green)"
           />
-          <Button
+          <Comp.Button
             onClick={() => setDeleteUserModal(false)}
             type="button"
             text="Cancelar"

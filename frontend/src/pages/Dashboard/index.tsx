@@ -1,18 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import * as S from "./styles";
 import { useFormatter, useSessionInfo } from "../../appHooks";
 import { FiEdit, FiTrash2 } from "react-icons/fi";
-import { ContactForm } from "../../components/ContactForm";
-import { ContactCard } from "../../components/ContactCard";
-import { useEffect, useState } from "react";
-import { IUser } from "../../globalTypes";
-import { UpdateUserModal } from "../../components/UpdateUserModal";
-import { DeleteUserModal } from "../../components/DeleteUserModal";
-import { Button } from "../../components";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import * as S from "./styles";
+import * as Comp from "../../components";
+import * as gt from "../../globalTypes";
 
 export const Dashboard = () => {
-  const [user, setUser] = useState<IUser>({} as IUser);
+  const [user, setUser] = useState<gt.IUser>({} as gt.IUser);
   const [editUserModal, setEditUserModal] = useState(false);
   const [deleteUserModal, setDeleteUserModal] = useState(false);
 
@@ -31,13 +27,13 @@ export const Dashboard = () => {
   return (
     <>
       {editUserModal && (
-        <UpdateUserModal
+        <Comp.UpdateUserModal
           setUser={setUser}
           setEditUserModal={setEditUserModal}
         />
       )}
       {deleteUserModal && (
-        <DeleteUserModal setDeleteUserModal={setDeleteUserModal} />
+        <Comp.DeleteUserModal setDeleteUserModal={setDeleteUserModal} />
       )}
       <S.Container>
         <section>
@@ -46,7 +42,7 @@ export const Dashboard = () => {
               <img src="https://i.ibb.co/m8HjKqj/logo.png" alt="imagem" />
               <h1>Contact Portfolio</h1>
             </div>
-            <Button
+            <Comp.Button
               onClick={() => navigate("/")}
               type="button"
               text="Logout"
@@ -82,7 +78,7 @@ export const Dashboard = () => {
               </section>
             </section>
           </S.BoxUser>
-          <ContactForm setUser={setUser} />
+          <Comp.ContactForm setUser={setUser} />
         </section>
 
         <S.BoxContacts>
@@ -90,7 +86,7 @@ export const Dashboard = () => {
           <section>
             {user.contacts &&
               user.contacts.map((contact) => (
-                <ContactCard
+                <Comp.ContactCard
                   setUser={setUser}
                   contact={contact}
                   key={contact.id}

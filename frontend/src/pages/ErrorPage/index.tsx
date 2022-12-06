@@ -1,11 +1,11 @@
-import { Container } from "./styles";
+import * as S from "./styles";
 import { useNavigate } from "react-router-dom";
 
 export const Error = () => {
   const navigate = useNavigate();
 
   return (
-    <Container>
+    <S.Container>
       <img
         src="https://i.ibb.co/DfMqY3h/404-error-with-people-holding-the-numbers-amico.png"
         alt="error_image"
@@ -24,6 +24,6 @@ export const Error = () => {
         <span>ou vosmicê pode</span>
         <p onClick={() => navigate("/dashboard")}>voltar</p>
       </div>
-    </Container>
+    </S.Container>
   );
 };

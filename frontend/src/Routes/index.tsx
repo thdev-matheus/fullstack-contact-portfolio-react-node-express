@@ -1,17 +1,15 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Dashboard } from "../pages/Dashboard";
-import { Error } from "../pages/ErrorPage";
-import { InitialPage } from "../pages/InitialPage";
+import * as Pages from "../pages";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <InitialPage />,
-    errorElement: <Error />,
+    element: <Pages.InitialPage />,
+    errorElement: <Pages.Error />,
   },
   {
     path: "/dashboard",
-    element: <Dashboard />,
-    errorElement: <Error />,
+    element: <Pages.Dashboard />,
+    errorElement: <Pages.Error />,
   },
 ]);
