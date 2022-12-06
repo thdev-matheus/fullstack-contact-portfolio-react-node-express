@@ -40,14 +40,14 @@
 
 Execução com o docker:
 
-link
+https://github.com/thdev-matheus/fullstack-contact-portfolio-react-node-express/blob/main/GET_START_DOCKER.md
 
 <br>
 
 Execução sem o docker:
 
 
-link
+https://github.com/thdev-matheus/fullstack-contact-portfolio-react-node-express/blob/main/GET_START_NO_DOCKER.md
 
 <br>
 
